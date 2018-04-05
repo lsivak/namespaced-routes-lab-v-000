@@ -8,7 +8,12 @@ class ArtistsController < ApplicationController
   end
 
   def new
+   @p = Preference.new(preference_params)
+   if p.allow_create_artists == "false"
+     redirect_to artists_path
+   else
     @artist = Artist.new
+   end
   end
 
   def create
